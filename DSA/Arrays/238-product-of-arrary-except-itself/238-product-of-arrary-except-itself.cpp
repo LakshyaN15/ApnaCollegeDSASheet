@@ -7,23 +7,23 @@
         output does not count towards the space complexity. */
 
 /***************** Approach 1 *****************/
-// class Solution {
-// public:
-//     vector<int> productExceptSelf(vector<int>& nums) {
-//      int n=nums.size();  
-//      vector<int>v1;              
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+     int n=nums.size();  
+     vector<int>v1;              
    
-//      for(int i=0; i<n; i++){
-//          int prod=1;
-//         for(int j=0; j<n; j++){
-//             if(i==j) continue;
-//             prod=prod*nums[j];
-//         }
-//         v1.push_back(prod);
-//      }   
-//     return v1;
-//     }
-// };
+     for(int i=0; i<n; i++){
+         int prod=1;
+        for(int j=0; j<n; j++){
+            if(i==j) continue;
+            prod=prod*nums[j];
+        }
+        v1.push_back(prod);
+     }   
+    return v1;
+    }
+};
 
 /*
     2. Better Approach [DP(Tabulation)]
@@ -38,28 +38,28 @@
 
 /***************** Approach 2 *****************/
 
-// class Solution{
-//     public:
-//     vector<int> productExceptSelf(vector<int>& nums){
-//         int n=nums.size();
-//         vector<int> ans(n);
-//         vector<int> left_Product(n);
-//         vector<int> right_Product(n);
-//         left_Product[0] = 1;
-//         for(int i=1; i<n; i++){
-//             left_Product[i] = left_Product[i-1]*nums[i-1];
-//         }
+class Solution{
+    public:
+    vector<int> productExceptSelf(vector<int>& nums){
+        int n=nums.size();
+        vector<int> ans(n);
+        vector<int> left_Product(n);
+        vector<int> right_Product(n);
+        left_Product[0] = 1;
+        for(int i=1; i<n; i++){
+            left_Product[i] = left_Product[i-1]*nums[i-1];
+        }
 
-//         right_Product[n-1]=1;
-//         for(int i=n-2; i>=0; i--){
-//             right_Product[i]=right_Product[i+1]*nums[i+1];
-//         }
-//         for(int i=0; i<n; i++){
-//             ans[i]=right_Product[i]*left_Product[i];
-//         }
-//         return ans;
-//     }
-// };
+        right_Product[n-1]=1;
+        for(int i=n-2; i>=0; i--){
+            right_Product[i]=right_Product[i+1]*nums[i+1];
+        }
+        for(int i=0; i<n; i++){
+            ans[i]=right_Product[i]*left_Product[i];
+        }
+        return ans;
+    }
+};
 
 /*
     3. Optimized Approach: DP(Space Optimized)
