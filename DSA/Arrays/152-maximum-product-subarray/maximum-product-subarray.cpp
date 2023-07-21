@@ -1,12 +1,10 @@
 /*Time complexity:
 O(N) + O(N) = O(N), where N is size of array.
 
-Space complexity:
-O(1)
+Space complexity: O(1)
 
 Intuition
 The Brute force method says we can simply apply 2 loops for calculaing all sub-arrays and finding the max product.
-
 But, the Optizimed way to solve this problem is using Kadane's Algorithm.
 
 Approach
