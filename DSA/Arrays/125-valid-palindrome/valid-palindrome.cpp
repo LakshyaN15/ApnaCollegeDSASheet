@@ -51,50 +51,50 @@ else update both pointers and continue.
 Finally after all checking if reach at last then string must be a valid palindrome so return true.
 
  */
-/***************** Approach 2 *****************/
-// class Solution{
-//     public:
-//     bool isPalindrome(string s){
-//         int end=s.size()-1;
-//         int start=0;
-//         while(start<=end){
-//             if(!isalnum(s[start])) {start++; continue;}
-//             if(!isalnum(s[end])) {end--; continue;}
-//             if(tolower(s[start])!=tolower(s[end])) return false;
-//         else{
-//             start++;
-//             end--;
-//         }
+/***************** Approach 2 (BEST APPROACH) *****************/
+class Solution{
+    public:
+    bool isPalindrome(string s){
+        int end=s.size()-1;
+        int start=0;
+        while(start<=end){
+            if(!isalnum(s[start])) {start++; continue;}
+            if(!isalnum(s[end])) {end--; continue;}
+            if(tolower(s[start])!=tolower(s[end])) return false;
+        else{
+            start++;
+            end--;
+        }
         
-//         }
-//         return true;
-//     }
-// };
+        }
+        return true;
+    }
+};
 
 /* Method 3: using auxiliary data structure
         Time complexity: O(n), space complexity: O(n)
         Not efficient enough */
 /***************** Approach 3 *****************/
 
-class Solution{
-public:
-bool isPalindrome(string s){
-    if(s.empty()) return true;
-    vector<int>v;
-    for(auto ch:s){
-        if(isalnum(ch)){
-            v.push_back(tolower(ch));
-        }
-    }
-               int begin = 0;
-        int end = v.size() - 1;
-        while (begin < end){
-            if(v[begin] != v[end]){
-                return false;
-            }
-            begin++;
-            end--;
-        }
-        return true;
-        }
-};
+// class Solution{
+// public:
+// bool isPalindrome(string s){
+//     if(s.empty()) return true;
+//     vector<int>v;
+//     for(auto ch:s){
+//         if(isalnum(ch)){
+//             v.push_back(tolower(ch));
+//         }
+//     }
+//                int begin = 0;
+//         int end = v.size() - 1;
+//         while (begin < end){
+//             if(v[begin] != v[end]){
+//                 return false;
+//             }
+//             begin++;
+//             end--;
+//         }
+//         return true;
+//         }
+// };
