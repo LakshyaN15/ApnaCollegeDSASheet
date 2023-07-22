@@ -28,25 +28,73 @@ S.C: The space complexity of the function is O(1) since the additional space use
 //     }
 // };
 
+
+
+
+
+/* T.C: O(n), n is the size of string and each functions check the condition due to while loop
+
+S.C:O(1), as only constant space is used.
+
+Intuition
+By reading the question you may think that first we need to convert the string to desired form and then check if its a valid palindrome or not.
+
+But all of that is just distraction you can check valid palindrome by simply using two pointers no need to convert.
+
+Approach
+If a character is not alphanumeric we can simply ignore it and update our pointer to next character (for both pointers)
+
+and then we check by converting the alphanumeric character to lowercase (tolower() function on numbers has no change)
+if those two are not equal then return false(not palindrome)
+else update both pointers and continue.
+
+Finally after all checking if reach at last then string must be a valid palindrome so return true.
+
+ */
 /***************** Approach 2 *****************/
+// class Solution{
+//     public:
+//     bool isPalindrome(string s){
+//         int end=s.size()-1;
+//         int start=0;
+//         while(start<=end){
+//             if(!isalnum(s[start])) {start++; continue;}
+//             if(!isalnum(s[end])) {end--; continue;}
+//             if(tolower(s[start])!=tolower(s[end])) return false;
+//         else{
+//             start++;
+//             end--;
+//         }
+        
+//         }
+//         return true;
+//     }
+// };
+
+/* Method 3: using auxiliary data structure
+        Time complexity: O(n), space complexity: O(n)
+        Not efficient enough */
+/***************** Approach 3 *****************/
+
 class Solution{
-    public:
-    bool isPalindrome(string s){
-        int end=s.size()-1;
-        int start=0;
-        while(start<=end){
-            if(!isalnum(s[start])) {start++; continue;}
-            if(!isalnum(s[end])) {end--; continue;}
-            if(tolower(s[start])!=tolower(s[end])) return false;
-        else{
-            start++;
+public:
+bool isPalindrome(string s){
+    if(s.empty()) return true;
+    vector<int>v;
+    for(auto ch:s){
+        if(isalnum(ch)){
+            v.push_back(tolower(ch));
+        }
+    }
+               int begin = 0;
+        int end = v.size() - 1;
+        while (begin < end){
+            if(v[begin] != v[end]){
+                return false;
+            }
+            begin++;
             end--;
         }
-        
-        }
         return true;
-    }
+        }
 };
-
-
-/***************** Approach 3 *****************/
